@@ -15,7 +15,7 @@ This single function module exists to simplify creation of DOM fragments in a wa
 
 This project is not meant to be a new silver bullet. If you're building a new application, or if you have the option to use a full-fledged view framework/library, by all means, use the other alternative. 
 
-# Demo
+# API
 
 The API exposed by `dfrag` is simple:
 
@@ -28,16 +28,20 @@ If you squint hard enough, you can see `React.createElement` in there...
  + `children` is an optional parameter. If it is a string or a number, it will be set as the element's `textContent`. If it is an array, each of the elements will be assumed to be DOM elements, and will be appended to the main element.
 
 
-    var title = dfrag('h1', { className: 'title', style: 'color: #c00' }, 'DOM Fragments');
-    var container = dfrag('div', {}, [
-       title,
-       dfrag('hr'),
-       dfrag('ul', {}, [
-         dfrag('li', {}, 'Aint no virtual dom'),
-         dfrag('li', { style: 'text-decoration: line-through' }, 'Better than Angular'),
-         dfrag('li', {}, '...')
-       ]),
-       dfrag('button', { disabled: true }, 'Submit'),
-    ])
-    
-    document.body.appendChild(container);
+# Usage
+
+```javascript
+var title = dfrag('h1', { className: 'title', style: 'color: #c00' }, 'DOM Fragments');
+var container = dfrag('div', {}, [
+   title,
+   dfrag('hr'),
+   dfrag('ul', {}, [
+     dfrag('li', {}, 'Aint no virtual dom'),
+     dfrag('li', { style: 'text-decoration: line-through' }, 'Better than Angular'),
+     dfrag('li', {}, '...')
+   ]),
+   dfrag('button', { disabled: true }, 'Submit'),
+])
+
+document.body.appendChild(container);
+```
